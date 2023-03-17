@@ -1,0 +1,73 @@
+{
+  "userData": [
+    {
+      "id": 1,
+      "name": "Adler",
+      "nick": "Adler",
+      "age": 12,
+      "bio": "Äta, sova, gosa",
+      "friends": [
+        "Inja",
+        "Link",
+        "Laban"
+      ],
+      "image": "/images/Adler.png",
+      "present": true
+    },
+    {
+      "name": "Inja",
+      "nick": "Inja",
+      "age": 11,
+      "bio": "Äta, sova, gosa",
+      "friends": [
+        "Adler",
+        "Link",
+        "Fendi"
+      ],
+      "image": "/images/Inja.jpg",
+      "present": true,
+      "id": 2
+    },
+    {
+      "id": 3,
+      "name": "Tage",
+      "nick": "Tage",
+      "age": 5,
+      "bio": "Äta, sova, gosa",
+      "friends": [
+        "Inja",
+        "Link",
+        "Laban"
+      ],
+      "image": "/images/Tage.jpg",
+      "present": false
+    },
+    {
+      "id": 4,
+      "name": "Bosse",
+      "nick": "Bosse",
+      "age": 10,
+      "bio": "Äta, sova, gosa",
+      "friends": [
+        "Inja",
+        "Link",
+        "Laban"
+      ],
+      "image": "/images/Bosse.jpg",
+      "present": false
+    },
+    {
+      "name": "Sizu",
+      "nick": "Sizu",
+      "age": 22,
+      "bio": "213",
+      "friends": [
+        "Link",
+        "Inja"
+      ],
+      "image": "/images/Sisu.jpg",
+      "present": false,
+      "id": 5
+    }
+  ]
+}

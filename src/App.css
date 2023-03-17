@@ -1,0 +1,193 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+p {
+    margin: 0;
+}
+
+.navbar {
+    background-color: lightgrey;
+    width: 100%;
+    color: black;
+    padding: 0;
+    align-items: stretch;
+}
+
+.active {
+    background-color: rgb(74, 72, 72);
+    color: white;
+}
+
+.navbar ul {
+    display: flex;
+    height: 100%;
+}
+
+.nav-link {
+    color: inherit;
+    font-size: 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+ul > .nav-link:hover {
+    background-color: rgb(74, 72, 72);
+    color: white;
+}
+
+.nav {
+    margin-top: 0px;
+}
+
+.nav-link:visited {
+    color: inherit;
+}
+
+.nav-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    margin-right: 5px;
+}
+
+.container {
+    max-width: none;
+    justify-content: center;
+}
+
+.navbar-brand {
+    font-size: 30px;
+}
+
+.dogs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card {
+    width: 18rem;
+    margin: 10px;
+}
+
+.card-body {
+    display: inline-flex;
+    justify-content: space-between;
+    font-size: 25px;
+    align-items: center;
+}
+
+.card-img-top {
+    width: 18rem;
+    height: 18rem;
+    object-fit: cover;
+}
+
+/* .link-card:hover{
+    background-color: ;
+} */
+
+.present {
+    color: green;
+}
+
+.notPresent {
+    color: red;
+}
+
+.newImg {
+    width: 15rem;
+    height: 15rem;
+    object-fit: cover;
+    margin-top: 10px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+}
+
+.form-div {
+    display: flex;
+    margin: 5px;
+    justify-content: space-between;
+}
+
+.form-div input,
+.form-div textarea {
+    width: 200px;
+    margin-left: 0.25rem;
+}
+
+.form-div select {
+    width: 100px;
+}
+
+input[type='submit'],
+button {
+    width: 100px;
+    height: 50px;
+    background-image: radial-gradient(closest-side, #424242 80%, #000000 200%);
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:active {
+    background-image: radial-gradient(closest-side, #000000 50%, #424242 200%);
+}
+
+.pawprint::before {
+    content: '';
+    display: inline-flex;
+    height: 15px;
+    width: 15px;
+    background-size: contain;
+    background-image: url('/public/images/Paw_Print.svg');
+    background-repeat: no-repeat;
+    margin-right: 5px;
+}
+
+.pawprint > a {
+    margin-left: 20px;
+}
+
+.ok-container {
+    position: absolute;
+    z-index: 2;
+    width: 300px;
+    margin: 100px auto;
+    background-color: white;
+    border: 2px solid rgb(74, 72, 72);
+    font-size: 30px;
+    padding: 1em;
+    color: black;
+}
+
+.invisible {
+    display: none;
+}

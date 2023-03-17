@@ -1,0 +1,44 @@
+const userData = [
+    {
+        name: 'Adler',
+        nick: 'Adler',
+        bio: 'Äta, sova, gosa',
+        friends: ['Inja', 'Link', 'Laban'],
+        image: './images/Adler.png',
+        present: true,
+    },
+    {
+        name: 'Inja',
+        nick: 'Inja',
+        bio: 'Äta, sova, gosa',
+        friends: ['Adler', 'Link', 'Fendi'],
+        image: './images/Inja.jpg',
+        present: false,
+    },
+    {
+        name: 'Tage',
+        nick: 'Tage',
+        bio: 'Äta, sova, gosa',
+        friends: ['Inja', 'Link', 'Laban'],
+        image: './images/Tage.jpg',
+        present: false,
+    },
+    {
+        name: 'Bosse',
+        nick: 'Bosse',
+        bio: 'Äta, sova, gosa',
+        friends: ['Inja', 'Link', 'Laban'],
+        image: './images/Bosse.jpg',
+        present: false,
+    },
+    {
+        name: 'Sizu',
+        nick: 'Sizu',
+        bio: 'Äta, sova, gosa',
+        friends: ['Inja', 'Link', 'Laban'],
+        image: './images/Sisu.jpg',
+        present: false,
+    },
+];
+
+export default userData;
