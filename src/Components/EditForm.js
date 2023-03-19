@@ -1,14 +1,27 @@
-const EditForm = ({ dogObj, setDogList, dogList, findIndex, setActive }) => {
+import { useSelector, useDispatch } from 'react-redux';
+import { useParams, Link } from 'react-router-dom';
+import { useState } from 'react';
+
+import { editFriend, editDog } from '../reducers/dogReducer';
+
+const EditForm = ({ setActive }) => {
+    const dispatch = useDispatch();
+    const { dogId } = useParams();
+    const dogIdNumber = Number(dogId);
+    const dogObj = useSelector((state) =>
+        state.dogReducer.find((dog) => dog.id === dogIdNumber)
+    );
+    const dogList = useSelector((state) => state.dogReducer);
+
     const addFriend = (e) => {
-        dogObj.friends.push(e.target.value);
-        setDogList([...dogList, dogObj]);
+        dispatch(editFriend(dogObj.id, e.target.value));
     };
 
     const submitHandler = async (event) => {
         event.preventDefault();
         const { name, nick, age, bio } = event.target;
 
-        const updateDog = {
+        const updatedDog = {
             name: name.value,
             nick: nick.value,
             age: Number(age.value),
@@ -18,7 +31,13 @@ const EditForm = ({ dogObj, setDogList, dogList, findIndex, setActive }) => {
             present: dogObj.present,
             id: dogObj.id,
         };
-        try {
+
+        dispatch(editDog(updatedDog));
+        setActive(false);
+        event.target.reset();
+    };
+
+    /*         try {
             const resp = await fetch(`/api/${dogObj.id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
@@ -33,8 +52,8 @@ const EditForm = ({ dogObj, setDogList, dogList, findIndex, setActive }) => {
             event.target.reset();
         } catch (error) {
             console.error(error);
-        }
-    };
+        } */
+
     /*
         const newList = [...dogList];
         newList[findIndex] = updateDog; */ return (

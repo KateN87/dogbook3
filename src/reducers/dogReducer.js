@@ -65,6 +65,25 @@ const dogReducer = (state = initialState, action) => {
                     return dog;
                 }
             });
+        case 'EDIT_FRIEND':
+            return state.map((dog) => {
+                if (dog.id === action.payload.id) {
+                    return {
+                        ...dog,
+                        friends: [...dog.friends, action.payload.friend],
+                    };
+                } else {
+                    return dog;
+                }
+            });
+        case 'EDIT_DOG':
+            return state.map((dog) => {
+                if (dog.id === action.payload.id) {
+                    return action.payload;
+                } else {
+                    return dog;
+                }
+            });
         default: //HOME
             return state;
     }
@@ -102,6 +121,43 @@ export const editPresent = (id) => {
     const action = {
         type: 'EDIT_PRESENT',
         payload: {
+            id,
+        },
+    };
+    return action;
+};
+
+export const editFriend = (id, friend) => {
+    const action = {
+        type: 'EDIT_FRIEND',
+        payload: {
+            id,
+            friend,
+        },
+    };
+    return action;
+};
+
+export const editDog = ({
+    name,
+    nick,
+    age,
+    bio,
+    friends,
+    image,
+    present,
+    id,
+}) => {
+    const action = {
+        type: 'EDIT_DOG',
+        payload: {
+            name,
+            nick,
+            age,
+            bio,
+            friends,
+            image,
+            present,
             id,
         },
     };

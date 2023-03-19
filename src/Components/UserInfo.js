@@ -30,10 +30,10 @@ const UserInfo = () => {
                 <li key={dogObj.id} className='pawprint'>
                     Friends:
                     <br />
-                    {dogObj.friends.map((dog) => (
+                    {dogObj.friends.map((friend) => (
                         <>
-                            <Link key={dogObj.name} to={`/user/${dog}`}>
-                                {dog}
+                            <Link key={dogObj.name} to={`/user/${friend}`}>
+                                {friend}
                             </Link>
                             <br />
                         </>

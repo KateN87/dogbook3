@@ -1,15 +1,19 @@
 import { useParams, Link } from 'react-router-dom';
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { editDog } from '../reducers/dogReducer';
 import EditForm from '../Components/EditForm';
 
-const Edit = ({ dogList, setDogList }) => {
+const Edit = () => {
+    const dispatch = useDispatch();
     const { dogId } = useParams();
     const dogIdNumber = Number(dogId);
+    const dogObj = useSelector((state) =>
+        state.dogReducer.find((dog) => dog.id === dogIdNumber)
+    );
 
+    console.log(dogObj);
     const [isActive, setActive] = useState(true);
-
-    const findIndex = dogList.findIndex((dog) => dog.id === dogIdNumber);
-    let dogObj = dogList[findIndex];
 
     const handleOk = () => {
         setActive(true);
@@ -18,13 +22,7 @@ const Edit = ({ dogList, setDogList }) => {
     return (
         <div className='container row'>
             <img src={dogObj.image} className='newImg'></img>
-            <EditForm
-                dogObj={dogObj}
-                setDogList={setDogList}
-                dogList={dogList}
-                findIndex={findIndex}
-                setActive={setActive}
-            />
+            <EditForm dogObj={dogObj} setActive={setActive} />
             <div className={`ok-container ${isActive ? 'invisible' : ''}`}>
                 <p>Dog edited!</p>
                 <Link to={`/user/${dogIdNumber}`}>
