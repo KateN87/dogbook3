@@ -1,7 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { editDog } from '../reducers/dogReducer';
 import EditForm from '../Components/EditForm';
 
 const Edit = () => {
