@@ -1,4 +1,9 @@
-const NewForm = ({ setDogList, setActive, dogList, newImage }) => {
+import { useSelector, useDispatch } from 'react-redux';
+import { addDog } from '../reducers/dogReducer';
+
+const NewForm = ({ newImage, setActive }) => {
+    const dogList = useSelector((state) => state.dogReducer);
+    const dispatch = useDispatch();
     const submitHandler = async (e) => {
         e.preventDefault();
         if (e.target.checkValidity()) {
@@ -17,6 +22,7 @@ const NewForm = ({ setDogList, setActive, dogList, newImage }) => {
                 present: false,
             };
 
+            /*
             try {
                 const resp = await fetch('api/', {
                     method: 'POST',
@@ -26,13 +32,15 @@ const NewForm = ({ setDogList, setActive, dogList, newImage }) => {
                 const json = await resp.json();
                 if (resp.status !== 200) {
                     console.log('wrong!');
-                }
-                setDogList(json);
-                setActive(false);
-                e.target.reset();
-            } catch (error) {
+                } */
+
+            dispatch(addDog(newDog));
+
+            setActive(false);
+            e.target.reset();
+            /*             } catch (error) {
                 console.error(error);
-            }
+            } */
         }
     };
 

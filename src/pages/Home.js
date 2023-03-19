@@ -1,13 +1,14 @@
 import DogCard from '../Components/DogCard.js';
 
-export default function Home({ dogList, setDogList }) {
+import { useSelector, useDispatch } from 'react-redux';
+
+export default function Home() {
+    const dogList = useSelector((state) => state.dogReducer);
     return (
         <>
             <div className='dogs'>
                 {dogList.map((dog) => (
                     <DogCard
-                        dogList={dogList}
-                        setDogList={setDogList}
                         key={dog.name}
                         name={dog.name}
                         image={dog.image}

@@ -5,6 +5,7 @@ import NewForm from '../Components/NewForm';
 export default function NewDog({ dogList, setDogList }) {
     const [isActive, setActive] = useState(true);
     const [newImage, setNewImage] = useState();
+
     useEffect(() => {
         async function fetchImage() {
             const resp = await fetch('https://dog.ceo/api/breeds/image/random');
@@ -17,12 +18,7 @@ export default function NewDog({ dogList, setDogList }) {
     return (
         <div className='container row'>
             <img src={newImage} className='newImg'></img>
-            <NewForm
-                setDogList={setDogList}
-                setActive={setActive}
-                dogList={dogList}
-                newImage={newImage}
-            />
+            <NewForm newImage={newImage} setActive={setActive} />
 
             <div className={`ok-container ${isActive ? 'invisible' : ''}`}>
                 <p>Dog added!</p>

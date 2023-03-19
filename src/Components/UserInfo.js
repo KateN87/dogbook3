@@ -1,46 +1,38 @@
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { editPresent } from '../reducers/dogReducer';
 
-const UserInfo = ({ dogObj, dogList, setDogList }) => {
-    const { name, nick, bio, age, present, id, image, friends } = dogObj;
-
-    const handleChecked = async (e) => {
-        const updateDog = {
-            name,
-            nick,
-            age,
-            bio,
-            friends,
-            image,
-            present: e.target.checked,
-            id,
-        };
-        try {
-            await fetch(`api/${id}`, {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(updateDog),
-            });
-        } catch (error) {}
-        const newList = [...dogList];
-        const findIndex = newList.findIndex((dog) => dog.name === name);
-        newList[findIndex].present = e.target.checked;
-        setDogList(newList);
-    };
+const UserInfo = () => {
+    const dispatch = useDispatch();
+    const { dogId } = useParams();
+    const dogObj = useSelector((state) =>
+        state.dogReducer.find((dog) => dog.id === Number(dogId))
+    );
 
     return (
         <div className='user-info'>
-            <h1>{name}</h1>
+            <h1>{dogObj.name}</h1>
 
             <ul>
-                <li className='pawprint'> Nick: {nick}</li>
-                <li className='pawprint'> Bio: {bio}</li>
-                <li className='pawprint'> Age: {age}</li>
-                <li className='pawprint'>
+                <li key={dogObj.nick} className='pawprint'>
+                    {' '}
+                    Nick: {dogObj.nick}
+                </li>
+                <li key={dogObj.bio} className='pawprint'>
+                    {' '}
+                    Bio: {dogObj.bio}
+                </li>
+                <li key={dogObj.age} className='pawprint'>
+                    {' '}
+                    Age: {dogObj.age}
+                </li>
+                <li key={dogObj.id} className='pawprint'>
                     Friends:
                     <br />
-                    {friends.map((dog) => (
+                    {dogObj.friends.map((dog) => (
                         <>
-                            <Link key={name} to={`/user/${dog}`}>
+                            <Link key={dogObj.name} to={`/user/${dog}`}>
                                 {dog}
                             </Link>
                             <br />
@@ -53,11 +45,13 @@ const UserInfo = ({ dogObj, dogList, setDogList }) => {
                 <input
                     id='presentBox'
                     type='checkbox'
-                    defaultChecked={present ? true : false}
-                    onChange={handleChecked}
+                    defaultChecked={dogObj.present}
+                    onChange={() => {
+                        dispatch(editPresent(dogObj.id));
+                    }}
                 ></input>
             </div>
-            <Link to={`/user/${id}/edit`}>
+            <Link to={`/user/${dogId}/edit`}>
                 <button>Edit</button>
             </Link>
         </div>
@@ -65,3 +59,27 @@ const UserInfo = ({ dogObj, dogList, setDogList }) => {
 };
 
 export default UserInfo;
+
+//const handleChecked = async (e) => {
+/* const updateDog = {
+        name,
+        nick,
+        age,
+        bio,
+        friends,
+        image,
+        present: e.target.checked,
+        id,
+    };
+    try {
+        await fetch(`api/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updateDog),
+        });
+    } catch (error) {}
+    const newList = [...dogList];
+    const findIndex = newList.findIndex((dog) => dog.name === name);
+    newList[findIndex].present = e.target.checked;
+    setDogList(newList); */
+//};

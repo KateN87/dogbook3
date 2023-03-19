@@ -1,10 +1,13 @@
 import { TiDelete } from 'react-icons/ti';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteDog } from '../reducers/dogReducer';
 
 const DogCard = (props) => {
-    const { name, image, present, dogList, setDogList, id } = props;
-    const removeDog = async (id) => {
-        try {
+    const { name, image, present, id } = props;
+    const dispatch = useDispatch();
+    /* const removeDog = async (id) => {
+                try {
             const resp = await fetch(`api/${id}`, {
                 method: 'DELETE',
             });
@@ -14,11 +17,7 @@ const DogCard = (props) => {
             console.error(error);
         }
 
-        /*         const newList = dogList.filter((dog) => dog.id !== id);
-        setDogList(newList); */
-    };
-
-    return (
+    }*/ return (
         <>
             <div className='card'>
                 <Link to={`/user/${id}`}>
@@ -26,7 +25,7 @@ const DogCard = (props) => {
                 </Link>
                 <div className='card-body'>
                     <p className={present ? 'present' : 'notPresent'}>{name}</p>
-                    <TiDelete onClick={() => removeDog(id)} />
+                    <TiDelete onClick={() => dispatch(deleteDog(id, name))} />
                 </div>
             </div>
         </>

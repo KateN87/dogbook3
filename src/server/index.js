@@ -1,16 +1,7 @@
 import express from 'express';
 import { db } from './database.js';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
 
 const app = express();
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-// Serve static files from the build directory
-app.use(express.static(path.join(__dirname, '../../public')));
 
 const logger = (req, res, next) => {
     console.log(`${req.method} ${req.url}`, req.body);
@@ -76,15 +67,6 @@ app.put('/api/:id', (req, res) => {
     db.data.userData[dogToEdit] = req.body;
     db.write();
     res.send(db.data.userData);
-});
-
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../public', 'index.html'));
-});
-// Handle all other requests by serving the index.html file
-app.get('*', (req, res) => {
-    res.setHeader('Content-Type', 'text/html');
-    res.sendFile(path.join(__dirname, '../../public', 'index.html'));
 });
 
 const port = 3001;
