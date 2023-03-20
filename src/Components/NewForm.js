@@ -22,7 +22,6 @@ const NewForm = ({ newImage, setActive }) => {
                 present: false,
             };
 
-            /*
             try {
                 const resp = await fetch('api/', {
                     method: 'POST',
@@ -31,19 +30,16 @@ const NewForm = ({ newImage, setActive }) => {
                 });
                 const json = await resp.json();
                 if (resp.status !== 200) {
-                    console.log('wrong!');
-                } */
-
-            dispatch(addDog(newDog));
-
-            setActive(false);
-            e.target.reset();
-            /*             } catch (error) {
+                    console.log('Ooops, somethign went wrong');
+                }
+                dispatch(addDog(json));
+                setActive(false);
+                e.target.reset();
+            } catch (error) {
                 console.error(error);
-            } */
+            }
         }
     };
-
     return (
         <form className='user-info' onSubmit={submitHandler}>
             <div className='form-div'>

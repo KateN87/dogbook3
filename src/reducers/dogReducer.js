@@ -1,50 +1,7 @@
-import uniqid from 'uniqid';
-
-const initialState = [
-    {
-        name: 'Adler',
-        nick: 'Adler',
-        age: 12,
-        bio: 'Äta, sova, gosa',
-        friends: ['Laban'],
-        image: '/images/Adler.png',
-        present: true,
-        id: 1,
-    },
-    {
-        name: 'Inja',
-        nick: 'Inja',
-        age: 4,
-        bio: 'Äta, sova, gosa',
-        friends: ['Adler', 'Link', 'Fendi'],
-        image: '/images/Inja.jpg',
-        present: true,
-        id: 2,
-    },
-    {
-        id: 3,
-        name: 'Tage',
-        nick: 'Tage',
-        age: 5,
-        bio: 'Äta, sova, gosa',
-        friends: ['Laban'],
-        image: '/images/Tage.jpg',
-        present: false,
-    },
-    {
-        id: 4,
-        name: 'Bosse',
-        nick: 'Bosse',
-        age: 10,
-        bio: 'Äta, sova, gosa',
-        friends: ['Laban'],
-        image: '/images/Bosse.jpg',
-        present: false,
-    },
-];
-
-const dogReducer = (state = initialState, action) => {
+const dogReducer = (state = [], action) => {
     switch (action.type) {
+        case 'GET_DOGS':
+            return action.payload;
         case 'DELETE_DOG':
             const { id, name } = action.payload;
 
@@ -89,11 +46,20 @@ const dogReducer = (state = initialState, action) => {
     }
 };
 
-export const addDog = ({ name, nick, age, bio, friends, image, present }) => {
+export const addDog = ({
+    name,
+    nick,
+    age,
+    bio,
+    friends,
+    image,
+    present,
+    id,
+}) => {
     const action = {
         type: 'ADD_DOG',
         payload: {
-            id: uniqid(),
+            id,
             name,
             nick,
             age,
@@ -165,21 +131,3 @@ export const editDog = ({
 };
 
 export default dogReducer;
-
-/* return state.map()
-db.data.userData.forEach((dog) => {
-    dog.friends = dog.friends.filter(
-        (friend) => friend !== dogToRemove.name
-    );
-});
-
-const dogId = Number(req.params.id);
-const dogToRemove = db.data.userData.find((dog) => dog.id === dogId);
-
-if (dogToRemove === undefined) {
-    res.sendStatus(400);
-}
-
-if (dogToRemove) {
-    db.data.userData = db.data.userData.filter((dog) => dog.id !== dogId);
-} */

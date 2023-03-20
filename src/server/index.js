@@ -43,7 +43,7 @@ app.delete('/api/:id', (req, res) => {
     });
 
     db.write();
-    res.status(200).send(db.data.userData);
+    res.status(200).send(dogToRemove);
 });
 
 app.post('/api', (req, res) => {
@@ -54,7 +54,7 @@ app.post('/api', (req, res) => {
     newDog.id = id;
     db.data.userData.push(newDog);
     db.write();
-    res.status(200).send(db.data.userData);
+    res.status(200).send(newDog);
 });
 
 app.put('/api/:id', (req, res) => {
@@ -66,7 +66,7 @@ app.put('/api/:id', (req, res) => {
     }
     db.data.userData[dogToEdit] = req.body;
     db.write();
-    res.send(db.data.userData);
+    res.sendStatus(200) /* .send(dogToEdit) */;
 });
 
 const port = 3001;

@@ -1,29 +1,28 @@
 {
   "userData": [
     {
+      "id": 1,
       "name": "Adler",
       "nick": "Adler",
       "age": 12,
       "bio": "Äta, sova, gosa",
       "friends": [
+        "Inja",
         "Laban"
       ],
       "image": "/images/Adler.png",
-      "present": true,
-      "id": 1
+      "present": true
     },
     {
       "name": "Inja",
       "nick": "Inja",
-      "age": 4,
+      "age": 6,
       "bio": "Äta, sova, gosa",
       "friends": [
-        "Adler",
-        "Link",
         "Fendi"
       ],
       "image": "/images/Inja.jpg",
-      "present": false,
+      "present": true,
       "id": 2
     },
     {

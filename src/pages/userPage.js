@@ -8,13 +8,13 @@ const User = (/* { dogList, setDogList } */) => {
     const { dogId } = useParams();
     const dogObj = dogList.find((dog) => dog.id === Number(dogId));
 
-    /* const [dogObj, setDogObj] = useState(null); */
+    /*  const [dogObj, setDogObj] = useState(null);
 
-    /* const fetchDog = async () => {
+     const fetchDog = async () => {
         const resp = await fetch(`/api/user/${dogId}`);
         const json = await resp.json();
         setDogObj(json);
-    }; */
+    };  */
 
     /* useEffect(() => {
         fetchDog();

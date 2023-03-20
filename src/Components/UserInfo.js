@@ -10,6 +10,39 @@ const UserInfo = () => {
         state.dogReducer.find((dog) => dog.id === Number(dogId))
     );
 
+    const handleChecked = async (e) => {
+        const updateDog = {
+            name: dogObj.name,
+            nick: dogObj.nick,
+            age: dogObj.age,
+            bio: dogObj.bio,
+            friends: dogObj.friends,
+            image: dogObj.image,
+            present: e.target.checked,
+            id: dogObj.id,
+        };
+
+        try {
+            const resp = await fetch(`/api/${dogObj.id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(updateDog),
+            });
+
+            if (resp.status === 200) {
+                dispatch(editPresent(dogObj.id));
+            } else {
+                console.log('Oh no', resp.status);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const presentHandler = () => {
+        editPresent(dogObj.id);
+    };
+
     return (
         <div className='user-info'>
             <h1>{dogObj.name}</h1>
@@ -46,9 +79,7 @@ const UserInfo = () => {
                     id='presentBox'
                     type='checkbox'
                     defaultChecked={dogObj.present}
-                    onChange={() => {
-                        dispatch(editPresent(dogObj.id));
-                    }}
+                    onChange={handleChecked}
                 ></input>
             </div>
             <Link to={`/user/${dogId}/edit`}>

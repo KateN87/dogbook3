@@ -32,31 +32,25 @@ const EditForm = ({ setActive }) => {
             id: dogObj.id,
         };
 
-        dispatch(editDog(updatedDog));
-        setActive(false);
-        event.target.reset();
-    };
-
-    /*         try {
+        try {
             const resp = await fetch(`/api/${dogObj.id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(updateDog),
+                body: JSON.stringify(updatedDog),
             });
-            const json = await resp.json();
+
             if (resp.status !== 200) {
                 console.log('wrong!');
             }
-            setDogList(json);
+            dispatch(editDog(updatedDog));
             setActive(false);
             event.target.reset();
         } catch (error) {
             console.error(error);
-        } */
+        }
+    };
 
-    /*
-        const newList = [...dogList];
-        newList[findIndex] = updateDog; */ return (
+    return (
         <form className='user-info' onSubmit={submitHandler}>
             <div className='form-div'>
                 <h1>Edit {dogObj.name}</h1>
