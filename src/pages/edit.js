@@ -1,22 +1,27 @@
 import { useParams, Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import EditForm from '../Components/EditForm';
+import { getDog } from '../reducers/dogReducer';
 
 const Edit = () => {
     const dispatch = useDispatch();
     const { dogId } = useParams();
+    console.log('DOG-ID', dogId);
     const dogIdNumber = Number(dogId);
     const dogObj = useSelector((state) =>
         state.dogReducer.find((dog) => dog.id === dogIdNumber)
     );
 
-    console.log(dogObj);
     const [isActive, setActive] = useState(true);
 
     const handleOk = () => {
         setActive(true);
     };
+
+    if (!dogObj) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className='container row'>

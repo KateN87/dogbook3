@@ -39,10 +39,6 @@ const UserInfo = () => {
         }
     };
 
-    const presentHandler = () => {
-        editPresent(dogObj.id);
-    };
-
     return (
         <div className='user-info'>
             <h1>{dogObj.name}</h1>

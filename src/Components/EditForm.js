@@ -7,14 +7,22 @@ import { editFriend, editDog } from '../reducers/dogReducer';
 const EditForm = ({ setActive }) => {
     const dispatch = useDispatch();
     const { dogId } = useParams();
-    const dogIdNumber = Number(dogId);
     const dogObj = useSelector((state) =>
-        state.dogReducer.find((dog) => dog.id === dogIdNumber)
+        state.dogReducer.find((dog) => dog.id === Number(dogId))
     );
+
     const dogList = useSelector((state) => state.dogReducer);
 
     const addFriend = (e) => {
         dispatch(editFriend(dogObj.id, e.target.value));
+    };
+
+    const removeFriend = (friendName) => {
+        const updatedDog = {
+            ...dogObj,
+            friends: dogObj.friends.filter((friend) => friend !== friendName),
+        };
+        dispatch(editDog(updatedDog));
     };
 
     const submitHandler = async (event) => {
@@ -88,11 +96,18 @@ const EditForm = ({ setActive }) => {
                         ))}
                     </select>
                 </div>
-                <ul>
+
+                <ul className='friendList'>
                     {dogObj.friends.map((dog) => (
-                        <li key={dog} className='pawprint'>
-                            {dog}
-                        </li>
+                        <div key={dog} className='edit-friends'>
+                            <li className='pawprint'>{dog}</li>
+                            <button
+                                id='removeDog'
+                                onClick={() => removeFriend(dog)}
+                            >
+                                X
+                            </button>
+                        </div>
                     ))}
                 </ul>
             </div>

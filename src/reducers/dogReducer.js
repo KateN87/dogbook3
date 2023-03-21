@@ -2,6 +2,7 @@ const dogReducer = (state = [], action) => {
     switch (action.type) {
         case 'GET_DOGS':
             return action.payload;
+
         case 'DELETE_DOG':
             const { id, name } = action.payload;
 
