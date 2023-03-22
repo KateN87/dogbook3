@@ -9,6 +9,20 @@ const UserInfo = () => {
     const dogObj = useSelector((state) =>
         state.dogReducer.find((dog) => dog.id === Number(dogId))
     );
+    const dogList = useSelector((state) => state.dogReducer);
+
+    const FriendList = ({ friend }) => {
+        const dogFriend = dogList.find((dog) => dog.name === friend);
+        console.log(dogFriend.id);
+        return (
+            <>
+                <Link key={dogObj.name} to={`/user/${dogFriend.id}`}>
+                    {friend}
+                </Link>
+                <br />
+            </>
+        );
+    };
 
     const handleChecked = async (e) => {
         const updateDog = {
@@ -60,12 +74,7 @@ const UserInfo = () => {
                     Friends:
                     <br />
                     {dogObj.friends.map((friend) => (
-                        <>
-                            <Link key={dogObj.name} to={`/user/${friend}`}>
-                                {friend}
-                            </Link>
-                            <br />
-                        </>
+                        <FriendList friend={friend} />
                     ))}
                 </li>
             </ul>
@@ -86,27 +95,3 @@ const UserInfo = () => {
 };
 
 export default UserInfo;
-
-//const handleChecked = async (e) => {
-/* const updateDog = {
-        name,
-        nick,
-        age,
-        bio,
-        friends,
-        image,
-        present: e.target.checked,
-        id,
-    };
-    try {
-        await fetch(`api/${id}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(updateDog),
-        });
-    } catch (error) {}
-    const newList = [...dogList];
-    const findIndex = newList.findIndex((dog) => dog.name === name);
-    newList[findIndex].present = e.target.checked;
-    setDogList(newList); */
-//};

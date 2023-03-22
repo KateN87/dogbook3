@@ -1,8 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, Link } from 'react-router-dom';
-import { useState } from 'react';
-
-import { editFriend, editDog } from '../reducers/dogReducer';
+import { useParams } from 'react-router-dom';
+import { editDog } from '../reducers/dogReducer';
 
 const EditForm = ({ setActive }) => {
     const dispatch = useDispatch();
@@ -14,7 +12,12 @@ const EditForm = ({ setActive }) => {
     const dogList = useSelector((state) => state.dogReducer);
 
     const addFriend = (e) => {
-        dispatch(editFriend(dogObj.id, e.target.value));
+        const updatedDog = {
+            ...dogObj,
+            friends: [...dogObj.friends, e.target.value],
+        };
+
+        dispatch(editDog(updatedDog));
     };
 
     const removeFriend = (friendName) => {

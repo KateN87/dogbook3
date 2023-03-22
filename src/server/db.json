@@ -1,54 +1,44 @@
 {
-  "userData": [
-    {
-      "id": 1,
-      "name": "Adler",
-      "nick": "Adler",
-      "age": 12,
-      "bio": "Äta, sova, gosa",
-      "friends": [
-        "Inja",
-        "Laban"
-      ],
-      "image": "/images/Adler.png",
-      "present": true
-    },
-    {
-      "name": "Inja",
-      "nick": "Inja",
-      "age": 12,
-      "bio": "Äta, sova, gosa",
-      "friends": [
-        "Inja",
-        "Adler"
-      ],
-      "image": "/images/Inja.jpg",
-      "present": true,
-      "id": 2
-    },
-    {
-      "id": 3,
-      "name": "Tage",
-      "nick": "Tage",
-      "age": 5,
-      "bio": "Äta, sova, gosa",
-      "friends": [
-        "Laban"
-      ],
-      "image": "/images/Tage.jpg",
-      "present": false
-    },
-    {
-      "id": 4,
-      "name": "Bosse",
-      "nick": "Bosse",
-      "age": 10,
-      "bio": "Äta, sova, gosa",
-      "friends": [
-        "Laban"
-      ],
-      "image": "/images/Bosse.jpg",
-      "present": false
-    }
-  ]
+    "userData": [
+        {
+            "id": 1,
+            "name": "Adler",
+            "nick": "Adler",
+            "age": 12,
+            "bio": "Äta, sova, gosa",
+            "friends": ["Inja"],
+            "image": "/images/Adler.png",
+            "present": true
+        },
+        {
+            "name": "Inja",
+            "nick": "Inja",
+            "age": 12,
+            "bio": "Äta, sova, gosa",
+            "friends": ["Inja", "Tage", "Bosse"],
+            "image": "/images/Inja.jpg",
+            "present": true,
+            "id": 2
+        },
+        {
+            "id": 3,
+            "name": "Tage",
+            "nick": "Tage",
+            "age": 5,
+            "bio": "Äta, sova, gosa",
+            "friends": ["Adler"],
+            "image": "/images/Tage.jpg",
+            "present": false
+        },
+        {
+            "id": 4,
+            "name": "Bosse",
+            "nick": "Bosse",
+            "age": 10,
+            "bio": "Äta, sova, gosa",
+            "friends": ["Tage"],
+            "image": "/images/Bosse.jpg",
+            "present": false
+        }
+    ]
 }

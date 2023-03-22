@@ -15,6 +15,7 @@ const dogReducer = (state = [], action) => {
             return updatedState;
         case 'ADD_DOG':
             return [...state, action.payload];
+
         case 'EDIT_PRESENT':
             return state.map((dog) => {
                 if (dog.id === action.payload.id) {
@@ -23,17 +24,7 @@ const dogReducer = (state = [], action) => {
                     return dog;
                 }
             });
-        case 'EDIT_FRIEND':
-            return state.map((dog) => {
-                if (dog.id === action.payload.id) {
-                    return {
-                        ...dog,
-                        friends: [...dog.friends, action.payload.friend],
-                    };
-                } else {
-                    return dog;
-                }
-            });
+
         case 'EDIT_DOG':
             return state.map((dog) => {
                 if (dog.id === action.payload.id) {
@@ -42,7 +33,7 @@ const dogReducer = (state = [], action) => {
                     return dog;
                 }
             });
-        default: //HOME
+        default:
             return state;
     }
 };
@@ -89,17 +80,6 @@ export const editPresent = (id) => {
         type: 'EDIT_PRESENT',
         payload: {
             id,
-        },
-    };
-    return action;
-};
-
-export const editFriend = (id, friend) => {
-    const action = {
-        type: 'EDIT_FRIEND',
-        payload: {
-            id,
-            friend,
         },
     };
     return action;
